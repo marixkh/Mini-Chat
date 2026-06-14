@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main-container">
+        <h1>Mini Chatroom ^-^</h1>
+
+        <form method="post" class="chat-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Send</button>
+        </form>
+
+        {% if message %}
+            <p class="status-msg">{{ message }}</p>
+        {% endif %}
+
+        <div class="chat-history">
+            {% for comment in comments %}
+            <div class="message-bubble">
+                <strong>{{ comment.name }}</strong>: {{ comment.text }}
+                <br>
+                <a href="{% url 'delete' comment.id %}" class="delete-link">Delete</a>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="footer-actions">
+            <p>Do you want to clear everything?</p>
+            <a href="{% url 'delete_all' %}" class="delete-all-btn">Delete all messages</a>
+        </div>
+    </div>
+</body>
+</html>
