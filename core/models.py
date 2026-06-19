@@ -1,5 +1,5 @@
 from django.db import models
 
-class Comment(models.Model):
-    name = models.CharField()
+class Message(models.Model):
+    email = models.EmailField()
     text = models.TextField()

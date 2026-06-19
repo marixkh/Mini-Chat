@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Document</title>
+</head>
+<body class="contact-page">
+    <div class="main-container">
+        <h1>Let's Connect! ✉️</h1>
+        <p>Have a question or want to collaborate? I'd love to hear from you.</p>
+
+        <form method="post" class="chat-form">
+            {% csrf_token %}
+            <!-- Assuming you have a ContactForm in your views -->
+            {{ form.as_p }}
+            <button type="submit" class="main-btn">Send Message</button>
+        </form>
+
+        <div class="contact-info">
+            <p>Or reach me directly:</p>
+            <p><strong>Email:</strong> marixkh@example.com</p>
+            <p><strong>GitHub:</strong> github.com/marixkh</p>
+        </div>
+        
+        <a href="{% url 'main' %}" class="secondary-btn">Back to Home</a>
+    </div>
+</body>

@@ -1,32 +1,19 @@
-from django.shortcuts import render, redirect
-from .forms import register
-from .models import Comment
+from django.shortcuts import render
+from .forms import message
+from .models import  Message
 
-def home(request):
-    message = None
-    form = register()
+def main(request):
+    return render(request, 'main.html')
 
-
+def contact(request):
+    form = message()
+    email = None
+    text = None
     if request.method == 'POST':
-        form = register(request.POST)
+        form = message(request.POST)
         if form.is_valid():
-            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
             text = form.cleaned_data['text']
-            Comment.objects.create(name=name, text=text)
-            message = 'Saved!'
-
-    comments = Comment.objects.all()
-
-
-
+        Message.objects.create(email=email, text=text)
         
-    return render(request, 'home.html', {'message':message, 'form':form, 'comments':comments})
-        
-def delete_comment(request, id):
-    comment = Comment.objects.get(id=id)
-    comment.delete()
-    return redirect('home')
-
-def delete_all(request):
-    comment = Comment.objects.all().delete()
-    return redirect('home')
+    return render(request,'contact.html',{'form':form})

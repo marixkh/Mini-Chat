@@ -1,0 +1,126 @@
+/* Import consistent font */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+body {
+    background: linear-gradient(135deg, #ffdee9, #b5fffc);
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    margin: 0;
+}
+
+.main-container {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 30px; /* Consistent 30px rounding */
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+}
+
+h1 { 
+    color: #ff758c; 
+    text-align: center; 
+    text-shadow: 1px 1px 0px white;
+}
+
+/* Form Styling */
+.todo-form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+input {
+    border: 2px solid #ffccd5;
+    border-radius: 12px;
+    padding: 10px;
+    width: 90%;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.add-btn {
+    background-color: #ff758c;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 15px; /* Consistent button rounding */
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* To-Do Items */
+.todo-item {
+    background: #fff;
+    padding: 15px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid #ff758c; /* Matches your chatroom aesthetic */
+}
+
+.task-text { color: #555; font-weight: 600; }
+
+.completed .task-text {
+    text-decoration: line-through;
+    color: #ffadb6;
+}
+
+.del-btn {
+    background: #ffe4e6;
+    color: #ff758c;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.message {
+    text-align: center;
+    color: #ff758c;
+    font-weight: bold;
+}
+
+/* Hide the default checkbox */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 25px;
+    height: 25px;
+    background-color: #fff;
+    border: 2px solid #ffccd5;
+    border-radius: 8px; /* Cute rounded edges */
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+    display: inline;
+}
+
+/* Style the checkmark when clicked */
+input[type="checkbox"]:checked {
+    background-color: #b5fffc; /* Your Minty Blue accent */
+    border-color: #b5fffc;
+}
+
+/* The actual tick mark */
+input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    color: #008080;
+    font-weight: bold;
+    left: 5px;
+    top: 1px;
+}
+
+/* Optional: Add a bouncy effect on hover */
+input[type="checkbox"]:hover {
+    transform: scale(1.1);
+}

@@ -1,10 +1,11 @@
 from django.contrib import admin
-from django.urls import path
-from core.views import home, delete_comment, delete_all
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name='home'),
-    path('delete/<int:id>/', delete_comment, name='delete'),
-    path('delete_all/',delete_all, name='delete_all'),
+    path('todo/', include('todo.urls')), #todo list
+    path('minichat/', include('minichat.urls')), #chat
+    path('posts/', include('posts.urls')), #posts
+    path('', include('core.urls')),
+
 ]

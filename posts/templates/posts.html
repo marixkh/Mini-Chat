@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'posts.css' %}">
+    <title>Posts</title>
+</head>
+<body>
+    <div class="main-container">
+        <h1>Posts ^-^</h1>
+
+        <form method="post" class="chat-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Send</button>
+        </form>
+
+        {% if message %}
+            <p class="status-msg">{{ message }}</p>
+        {% endif %}
+
+ <div class="posts-section">
+    <h2>Posts:</h2>
+    {% for post in posts %}
+    <div class="post-card">
+        <h3 class="post-title">{{ post.title }}</h3>
+        <p class="post-content">{{ post.content }}</p>
+        <br>
+        <a href="{% url 'delete_post' post.id %}" class="delete-link">Delete</a>
+        <a href="{% url 'edit_post' post.id %}" class="delete-link">Edit</a>
+    </div>
+    {% endfor %}
+    <a href="{% url 'main' %}" class="secondary-btn">Back to Home</a>
+</body>
+</html>

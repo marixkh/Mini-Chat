@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'minichat.css' %}">
+    <title>Chatroom</title>
 </head>
 <body>
     <div class="main-container">
@@ -35,6 +35,8 @@
             <p>Do you want to clear everything?</p>
             <a href="{% url 'delete_all' %}" class="delete-all-btn">Delete all messages</a>
         </div>
+        <br>
+        <a href="{% url 'main' %}" class="secondary-btn">Back to Home</a>
     </div>
 </body>
 </html>

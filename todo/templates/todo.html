@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'todo.css' %}">
+    <title>To Do List✨</title>
+</head>
+
+<body>
+    <div class="main-container">
+        <h1>My Tasks ✨</h1>
+
+        <form method="post" class="todo-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="add-btn">Add Task</button>
+        </form>
+
+        {% if message %}<p class="message">{{ message }}</p>{% endif %}
+
+        <div class="todo-list">
+            {% for task in tasks %}
+            <div class="todo-item {% if task.is_completed %}completed{% endif %}">
+                <span class="task-text">{{ task.title }}</span>
+                <div class="actions">
+                    <!-- If you have a toggle_complete view -->
+                    <a href="{% url 'todo_delete' task.id %}" class="del-btn">✕</a>
+                    <input  type="checkbox">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
